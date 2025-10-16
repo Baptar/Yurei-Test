@@ -183,14 +183,23 @@ namespace StarterAssets
             camRight.Normalize();
 
             // not immediately change the axes when the camera changes, Slerp interpolates to the new orientation
-            _smoothedForward = Vector3.Slerp(_smoothedForward, camForward, Time.deltaTime * CameraDirSmooth);
-            _smoothedRight = Vector3.Slerp(_smoothedRight, camRight, Time.deltaTime * CameraDirSmooth);
-
+            if (_input.move.sqrMagnitude > 0.001f)
+            {
+                _smoothedForward = Vector3.Slerp(_smoothedForward, camForward, Time.deltaTime * CameraDirSmooth);
+                _smoothedRight = Vector3.Slerp(_smoothedRight, camRight, Time.deltaTime * CameraDirSmooth);
+            }
+            else
+            {
+                // if player stops → align directly
+                _smoothedForward = camForward;
+                _smoothedRight = camRight;
+            }
+            
             // take the joystick (_input.move) and project it onto the smoothed camera axes
             Vector3 inputDirection = (_smoothedRight * _input.move.x + _smoothedForward * _input.move.y).normalized;
 
             // convert inputDirection to an angle so that the character points in its direction of movement
-            if (_input.move != Vector2.zero)
+            if (_input.move.sqrMagnitude > 0.001f)
             {
                 _targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg;
                 float rotation = Mathf.SmoothDampAngle(transform.eulerAngles.y, _targetRotation, ref _rotationVelocity, RotationSmoothTime);
