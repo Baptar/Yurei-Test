@@ -1,4 +1,6 @@
+using DG.Tweening;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CameraZone : MonoBehaviour
 {
@@ -6,6 +8,9 @@ public class CameraZone : MonoBehaviour
     public Camera zoneCamera; 
     [SerializeField] private bool deactivateCameraOnStart = false;
     [SerializeField] private GameObject[] objectToActivate;
+    
+    [SerializeField] private RawImage _renderTexture;
+    [SerializeField] private Color _colorDeactivated;
     
     private void Start()
     {
@@ -15,6 +20,8 @@ public class CameraZone : MonoBehaviour
         
         foreach (GameObject obj in objectToActivate)
             obj.SetActive(false);
+        
+        ManageRenderTexturesLight(false);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -24,6 +31,7 @@ public class CameraZone : MonoBehaviour
             CameraManager.Instance.SwitchTo(zoneCamera);
             LightZoneManager.Instance.OnEnterNewZone(this);
             ManagerObjectToActivate(true);
+            ManageRenderTexturesLight(true);
         }
     }
 
@@ -31,5 +39,11 @@ public class CameraZone : MonoBehaviour
     {
         foreach (GameObject obj in objectToActivate)
             obj.SetActive(activate);
+    }
+    
+    public void ManageRenderTexturesLight(bool activate)
+    {
+        //_renderTexture.color = activate? Color.white : _colorDeactivated;
+        _renderTexture.DOColor(activate? Color.white : _colorDeactivated, 0.2f);
     }
 }

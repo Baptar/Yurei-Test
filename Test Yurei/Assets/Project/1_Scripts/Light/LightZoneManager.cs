@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LightZoneManager : MonoBehaviour
 {
@@ -25,6 +26,7 @@ public class LightZoneManager : MonoBehaviour
         
         Debug.Log("OnEnterNewZone");
         actualCameraZone.ManagerObjectToActivate(false);
+        actualCameraZone.ManageRenderTexturesLight(false);
         actualCameraZone = newZone;
     }
 }

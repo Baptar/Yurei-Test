@@ -147,7 +147,7 @@ Transform:
   m_GameObject: {fileID: 43768447}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.000000007450581, w: 1}
-  m_LocalPosition: {x: 2.8069067, y: 0.9385394, z: -3.6050224}
+  m_LocalPosition: {x: 3.211, y: 0.9385394, z: -3.6050224}
   m_LocalScale: {x: 0.91882026, y: 1.6043999, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -169,6 +169,8 @@ MonoBehaviour:
   deactivateCameraOnStart: 0
   objectToActivate:
   - {fileID: 1204380248}
+  _renderTexture: {fileID: 1177191277}
+  _colorDeactivated: {r: 0.5568628, g: 0.5568628, b: 0.5568628, a: 1}
 --- !u!114 &43768450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,7 +207,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 6.02, y: 1, z: 6.32}
+  m_Size: {x: 5.54, y: 1, z: 6.32}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &102132549
 GameObject:
@@ -699,6 +701,8 @@ MonoBehaviour:
   objectToActivate:
   - {fileID: 433904172}
   - {fileID: 564924377}
+  _renderTexture: {fileID: 1770567598}
+  _colorDeactivated: {r: 0.5568628, g: 0.5568628, b: 0.5568628, a: 1}
 --- !u!114 &234753453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1059,6 +1063,8 @@ MonoBehaviour:
   deactivateCameraOnStart: 0
   objectToActivate:
   - {fileID: 325777515}
+  _renderTexture: {fileID: 348082538}
+  _colorDeactivated: {r: 0.5568628, g: 0.5568628, b: 0.5568628, a: 1}
 --- !u!114 &373526199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1381,6 +1387,8 @@ MonoBehaviour:
   deactivateCameraOnStart: 0
   objectToActivate:
   - {fileID: 1020945140}
+  _renderTexture: {fileID: 1369802397}
+  _colorDeactivated: {r: 0.5568628, g: 0.5568628, b: 0.5568628, a: 1}
 --- !u!114 &870558494
 MonoBehaviour:
   m_ObjectHideFlags: 0
